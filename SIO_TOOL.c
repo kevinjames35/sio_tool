@@ -77,30 +77,14 @@ uint16_t wAddr =0, xData=0;
 	
 	__sio_unlock();
 	__sio_logic_device(0x00);
-outb(0x70, SIO_CFGINDEX);
-outb(0x04, SIO_CFGDATA);
 
-outb(0x25, SIO_CFGINDEX);
-outb(0x01, SIO_CFGDATA);
 for(int xi=0;xi<=255;xi++)
 {
 	outb(xi, SIO_CFGINDEX);
 	xData=(uint16_t)inb(SIO_CFGDATA);
 printf("0x%X = 0x%X\n",xi,xData);
 }
-	outb(0x23, SIO_CFGINDEX);
-	xData=(uint16_t)inb(SIO_CFGDATA);
-//printf("vendor id=%X\n",xData);
-	outb(0x25, SIO_CFGINDEX);
-	xData=(uint16_t)inb(SIO_CFGDATA);
-//printf("clock select=%X\n",xData);
 
-
-//	outb(0x60, SIO_CFGINDEX);
-//	xData=(uint16_t)inb(SIO_CFGDATA);
-//	outb(0x61, SIO_CFGINDEX);
-//	wAddr=(uint16_t)inb(SIO_CFGDATA);
-//	wAddr= wAddr | (xData << 8 ) ;
 	__sio_lock();
 	
 	return 0;
